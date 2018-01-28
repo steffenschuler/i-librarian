@@ -253,7 +253,7 @@ color: #" . $main_window_color . ";
 
 .ui-widget-header {
 color: #" . $main_window_color . ";
-background-color: #" . $alternating_row_background_color . ";
+background-color: #E0E0E0;
 }
 ";
 
