@@ -169,6 +169,54 @@ if (!isset($_POST['form']) && !isset($_SESSION['auth']) && $ini_array['autosign'
 
     include 'authenticate.php';
 }
+
+/**
+ * Remote-sign in.
+ */
+if (!isset($_POST['form']) && !isset($_SESSION['auth']) && $ini_array['remotesign'] == 1) {
+
+    database_connect(IL_USER_DATABASE_PATH, 'users');
+
+    $username_quoted = $dbHandle->quote($_SERVER['REMOTE_USER']);
+
+    $result = $dbHandle->query("SELECT COUNT(*) FROM users WHERE username=$username_quoted");
+    $userExists = $result->fetchColumn();
+    $result = null;
+    if($userExists)
+    {
+		$result = $dbHandle->query("SELECT userID, permissions FROM users WHERE username=$username_quoted");
+
+		$row = $result->fetch(PDO::FETCH_ASSOC);
+		$result = null;
+		$dbHandle = null;
+
+		extract($row);
+    }
+    else // User does not exist yet - create it.
+    {	
+		// Read default user permissions.
+		$result = $dbHandle->query("SELECT setting_value FROM settings WHERE setting_name='default_permissions'");
+		$default_permissions = $result->fetchColumn();
+		$result = null;
+		!empty($default_permissions) ? $permissions = $default_permissions : $permissions = 'U';
+
+		// Save the user to database.
+		$dbHandle->exec("INSERT INTO users (username,password,permissions) VALUES (" . $username_quoted . ",'','" . $permissions . "')");
+		// Get user ID.
+		$userID = $dbHandle->lastInsertId();
+    }
+
+    $_SESSION['user_id'] = $userID;
+    $_SESSION['user'] = $_SERVER['REMOTE_USER'];
+    $_SESSION['permissions'] = $permissions;
+    $_SESSION['auth'] = true;
+    $_POST['keepsigned'] = 1;
+
+    // Set fake form submit to read settings.
+    $_POST['form'] = 'remotesign';
+
+    include 'authenticate.php';
+}
 ?>
 <!DOCTYPE html>
 <html style="width:100%;height:100%">

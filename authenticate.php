@@ -50,7 +50,7 @@ if (isset($_GET['action']) && $_GET['action'] == 'signout') {
     }
     $_SESSION = array();
     session_destroy();
-    if (!isset($ini_array['autosign']) || $ini_array['autosign'] != 1) {
+    if ((!isset($ini_array['autosign']) || $ini_array['autosign'] != 1) && (!isset($ini_array['remotesign']) || $ini_array['remotesign'] != 1)) {
         die('OK');
     }
 }
@@ -387,7 +387,7 @@ if (isset($_SESSION['auth']) && isset($_POST['form'])) {
     $user_id_q = $dbHandle->quote($_SESSION['user_id']);
 
     // Session management.
-    if ($ini_array['autosign'] == 0) {
+    if ((!isset($ini_array['autosign']) || $ini_array['autosign'] != 1) && (!isset($ini_array['remotesign']) || $ini_array['remotesign'] != 1)) {
 
         $session_id_q = $dbHandle->quote(session_id());
 
@@ -446,7 +446,7 @@ if (isset($_SESSION['auth']) && isset($_POST['form'])) {
     // Create user specific temp directory.
     @mkdir(IL_TEMP_PATH . DIRECTORY_SEPARATOR . 'lib_' . session_id());
 
-    if (!isset($ini_array['autosign']) || $ini_array['autosign'] != 1) {
+    if ((!isset($ini_array['autosign']) || $ini_array['autosign'] != 1) && (!isset($ini_array['remotesign']) || $ini_array['remotesign'] != 1)) {
         die('OK');
     }
 }

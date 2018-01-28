@@ -1,6 +1,15 @@
 <?php
 include_once 'data.php';
 include_once 'functions.php';
+
+/**
+ * Parse ilibrarian.ini.
+ */
+if (file_exists('ilibrarian.ini')) {
+    $ini_array = parse_ini_file("ilibrarian.ini");
+} else {
+    $ini_array = parse_ini_file("ilibrarian-default.ini");
+}
 ?>
 <table class="noprint" style="width:100%;height:100%">
     <tr>
@@ -26,10 +35,12 @@ include_once 'functions.php';
             ?>
         </td>
         <td class="topindex" style="padding-right:1em;vertical-align: middle;height:100%;text-align:right">
-            <span id="link-signout" style="cursor:pointer" title="Sign Out">
-                <span id="username-span"><?php print htmlspecialchars($_SESSION['user']) ?></span>
-                &nbsp;&nbsp;<i class="fa fa-power-off"></i>
-            </span>
+        <?php
+        if((!isset($ini_array['autosign']) || $ini_array['autosign'] != 1) && (!isset($ini_array['remotesign']) || $ini_array['remotesign'] != 1))
+            echo '<span id="link-signout" style="cursor:pointer" title="Sign Out"><span id="username-span">' . htmlspecialchars($_SESSION['user']) .'</span>&nbsp;&nbsp;<i class="fa fa-power-off"></i></span>';
+        else
+            echo '<span id="username-span">' . htmlspecialchars($_SESSION['user']) .'</span>';
+        ?>
         </td>
     </tr>
 </table>
