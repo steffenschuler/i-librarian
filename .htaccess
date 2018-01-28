@@ -1,3 +1,5 @@
+IndexOptions +Charset=UTF-8
+
 <IfModule mod_php5.c>
     php_value upload_max_filesize 400M
     php_value post_max_size 800M
