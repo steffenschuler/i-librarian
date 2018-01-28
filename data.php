@@ -69,7 +69,7 @@ if (!empty($ini_array['temp_path'])) {
 } else {
 
     $temp_dir = sys_get_temp_dir();
-    if (PHP_OS == 'Linux') {
+    if (PHP_OS == 'Linux' || PHP_OS == 'Darwin') {
         $temp_dir = '/var/tmp';
     }
 }

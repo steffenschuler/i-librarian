@@ -677,118 +677,44 @@ function sqlite_levenshtein($string1, $string2) {
 /////////////select pdftotext//////////////////////
 
 function select_pdftotext() {
-
-    $path = __DIR__ . DIRECTORY_SEPARATOR . 'bin' . DIRECTORY_SEPARATOR . 'poppler';
-    $output = 'pdftotext';
-
-    if (strtoupper(substr(PHP_OS, 0, 3)) == 'WIN' && is_executable($path . DIRECTORY_SEPARATOR . $output . '.exe')) {
-        $output = $path . DIRECTORY_SEPARATOR . $output . '.exe';
-    } elseif (is_executable($path . DIRECTORY_SEPARATOR . $output)) {
-        $output = $path . DIRECTORY_SEPARATOR . $output;
-    }
-
-    return '"' . $output . '"';
-
+    return '/usr/local/bin/pdftotext';
 }
 
 /////////////select pdfinfo//////////////////////
 
 function select_pdfinfo() {
-
-    $path = __DIR__ . DIRECTORY_SEPARATOR . 'bin' . DIRECTORY_SEPARATOR . 'poppler';
-    $output = 'pdfinfo';
-
-    if (strtoupper(substr(PHP_OS, 0, 3)) == 'WIN' && is_executable($path . DIRECTORY_SEPARATOR . $output . '.exe')) {
-        $output = $path . DIRECTORY_SEPARATOR . $output . '.exe';
-    } elseif (PHP_OS == 'Darwin' && is_executable($path . DIRECTORY_SEPARATOR . 'Frameworks' . DIRECTORY_SEPARATOR . $output)) {
-        $output = $path . DIRECTORY_SEPARATOR . 'Frameworks' . DIRECTORY_SEPARATOR . $output;
-    }
-
-    return '"' . $output . '"';
-
+    return '/usr/local/bin/pdfinfo';
 }
 
 /////////////select pdftohtml//////////////////////
 
 function select_pdftohtml() {
-
-    $path = __DIR__ . DIRECTORY_SEPARATOR . 'bin' . DIRECTORY_SEPARATOR . 'poppler';
-    $output = 'pdftohtml';
-
-    if (strtoupper(substr(PHP_OS, 0, 3)) == 'WIN' && is_executable($path . DIRECTORY_SEPARATOR . $output . '.exe')) {
-        $output = $path . DIRECTORY_SEPARATOR . $output . '.exe';
-    } elseif (PHP_OS == 'Darwin' && is_executable($path . DIRECTORY_SEPARATOR . 'Frameworks' . DIRECTORY_SEPARATOR . $output)) {
-        $output = $path . DIRECTORY_SEPARATOR . 'Frameworks' . DIRECTORY_SEPARATOR . $output;
-    }
-
-    return '"' . $output . '"';
-
+    return '/usr/local/bin/pdftohtml';
 }
 
 /////////////select pdfdetach//////////////////////
 
 function select_pdfdetach() {
-
-    $path = __DIR__ . DIRECTORY_SEPARATOR . 'bin' . DIRECTORY_SEPARATOR . 'poppler';
-    $output = 'pdfdetach';
-
-    if (strtoupper(substr(PHP_OS, 0, 3)) == 'WIN' && is_executable($path . DIRECTORY_SEPARATOR . $output . '.exe')) {
-        $output = $path . DIRECTORY_SEPARATOR . $output . '.exe';
-    } elseif (is_executable($path . DIRECTORY_SEPARATOR . $output)) {
-        $output = $path . DIRECTORY_SEPARATOR . $output;
-    }
-
-    return '"' . $output . '"';
-
+    return '/usr/local/bin/pdfdetach';
 }
 
 /////////////select ghostscript//////////////////////
 
 function select_ghostscript() {
-
-    $path = __DIR__ . DIRECTORY_SEPARATOR . 'bin' . DIRECTORY_SEPARATOR . 'gs';
-    $output = 'gs';
-
-    if (strtoupper(substr(PHP_OS, 0, 3)) == 'WIN' && is_executable($path . DIRECTORY_SEPARATOR . $output . 'win32c.exe')) {
-        $output = $path . DIRECTORY_SEPARATOR . $output . 'win32c.exe';
-    } elseif (is_executable($path . DIRECTORY_SEPARATOR . $output)) {
-        $output = $path . DIRECTORY_SEPARATOR . $output;
-    }
-
-    return '"' . $output . '"';
-
+    return '/usr/local/bin/gs';
 }
 
 /////////////select tesseract//////////////////////
 
 function select_tesseract() {
-
-    $output = 'tesseract';
-
-    if (strtoupper(substr(PHP_OS, 0, 3)) == 'WIN') {
-        $output = '%PROGRAMFILES%\\Tesseract-OCR\\tesseract.exe';
-    }
-
-    return '"' . $output . '"';
-
+    return '/usr/local/bin/tesseract';
 }
 
 /////////////select soffice//////////////////////
 
 function select_soffice() {
-
-    $output = 'soffice';
-
-    if (strtoupper(substr(PHP_OS, 0, 3)) == 'WIN') {
-        if (!empty($_SESSION['soffice_path'])) {
-            $output = $_SESSION['soffice_path'] . DIRECTORY_SEPARATOR . 'soffice.exe';
-        } else {
-            $output = '%PROGRAMFILES%\\LibreOffice 4\\program\\soffice.exe';
-        }
-    }
-
-    return '"' . $output . '"';
-
+    return '';
+    //return '/Volumes/Daten/LibreOffice.app/Contents/MacOS/soffice';
 }
 
 /**

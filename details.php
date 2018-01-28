@@ -219,6 +219,7 @@ if (isset($_SESSION['auth']) && isset($_SESSION['permissions']) && $_SESSION['pe
         print '<td class="details" id="details-15" style="white-space: nowrap;height:19px;line-height:19px"><img src="img/ajaxloader.gif" style="vertical-align:middle"></td>';
         print '<td class="details" id="details-16" style="font-weight: bold;height:19px;line-height:19px"><img src="img/ajaxloader.gif" style="vertical-align:middle"></td></tr>';
 
+        /*
         if (strtoupper(substr(PHP_OS, 0, 3)) == 'WIN') {
             if (empty($_SESSION['soffice_path'])) {
                 // Translate default LibreOffice path.
@@ -235,6 +236,7 @@ if (isset($_SESSION['auth']) && isset($_SESSION['permissions']) && $_SESSION['pe
                 echo '</td></tr>';
             }
         }
+        */
         echo "</td>";
 
         print "<tr><td class=\"details alternating_row\" style=\"width: 100%\" colspan=4>I, Librarian " . $version . " is installed in \"" . __DIR__ . "\":</td></tr>";
