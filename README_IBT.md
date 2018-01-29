@@ -10,11 +10,12 @@ Make the following changes in /etc/apache2/httpd.conf:
 
 * Enable php by adding the line (or similar):
 
-  `LoadModule php7_module /usr/local/php5/libphp7.so`
+`LoadModule php7_module /usr/local/php5/libphp7.so`
 
 * Add a new Directory directive by inserting:
 
-  ```apache_conf
+```
+apache_conf
 <Directory /Volumes/Daten/ilibrarian>
     <FilesMatch "\.(ini|conf)$">
         Require all denied
@@ -29,16 +30,19 @@ Make the following changes in /usr/local/php5/php.d/99-liip-developer.ini:
 
 * Add the lines:
 
-  `upload_max_filesize = 200M`
-  `post_max_size = 800M`
-  `max_input_vars = 10000`
+```
+upload_max_filesize = 200M
+post_max_size = 800M
+max_input_vars = 10000
+```
 
 * Change the date settings to:
 
-  `date.timezone = "Europe/Berlin"`
-  `date.default_latitude  = 49.0047 ; Karlsruhe`
-  `date.default_longitude = 8.3858  ; Karlsruhe`
-  
+```
+date.timezone = "Europe/Berlin"
+date.default_latitude  = 49.0047 ; Karlsruhe
+date.default_longitude = 8.3858  ; Karlsruhe
+```
 
 ### Install additional dependencies:
 
@@ -51,7 +55,6 @@ Make the following changes in /usr/local/php5/php.d/99-liip-developer.ini:
     `curl https://raw.githubusercontent.com/tesseract-ocr/tessdata/3.04.00/spa.traineddata --output /usr/local/share/tessdata/spa.traineddata`
 
 * (LibreOffice from DMG image: https://www.libreoffice.org/download)
-
 
 ### Set up I, Librarian
 
