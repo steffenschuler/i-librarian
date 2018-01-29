@@ -50,9 +50,11 @@ date.default_longitude = 8.3858  ; Karlsruhe
   `brew install poppler ghostscript tesseract`
   
   * Download additional Tesseract language files from https://github.com/tesseract-ocr/tessdata/tree/3.04.00:
-    `curl https://raw.githubusercontent.com/tesseract-ocr/tessdata/3.04.00/deu.traineddata --output /usr/local/share/tessdata/deu.traineddata`
-    `curl https://raw.githubusercontent.com/tesseract-ocr/tessdata/3.04.00/fra.traineddata --output /usr/local/share/tessdata/fra.traineddata`
-    `curl https://raw.githubusercontent.com/tesseract-ocr/tessdata/3.04.00/spa.traineddata --output /usr/local/share/tessdata/spa.traineddata`
+```
+curl https://raw.githubusercontent.com/tesseract-ocr/tessdata/3.04.00/deu.traineddata --output /usr/local/share/tessdata/deu.traineddata
+curl https://raw.githubusercontent.com/tesseract-ocr/tessdata/3.04.00/fra.traineddata --output /usr/local/share/tessdata/fra.traineddata
+curl https://raw.githubusercontent.com/tesseract-ocr/tessdata/3.04.00/spa.traineddata --output /usr/local/share/tessdata/spa.traineddata
+```
 
 * (LibreOffice from DMG image: https://www.libreoffice.org/download)
 
