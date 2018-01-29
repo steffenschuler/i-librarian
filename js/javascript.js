@@ -2847,7 +2847,7 @@ var desktop = {
         // clicked tab memory
         var clickedTab = localStorage.getItem("search-menu-tab");
         if (!clickedTab)
-            clickedTab = 0;
+            clickedTab = 1;
         $('#search-menu div:eq(' + clickedTab + ')').click();
         $("#advancedsearchbutton").click(function () {
             $(this).blur();
@@ -4730,7 +4730,7 @@ var leftindex = {
         // clicked tab memory
         var clickedTab = localStorage.getItem("search-menu-tab");
         if (!clickedTab)
-            clickedTab = 0;
+            clickedTab = 1;
         $('#search-menu div:eq(' + clickedTab + ')').click();
         /////////////////////////////button effects///////////////////////////////////
         $('#leftindex-left').find('button.menu').each(function(){

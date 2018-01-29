@@ -130,8 +130,8 @@ $number_of_users = count($users);
         <input type="hidden" name="rating[]" value="3">
     </form>
     <div id="search-menu" style="width:100%">
-        <div class="ui-state-default tabclicked" title="Global search"><i class="fa fa-database"></i></div>
-        <div class="ui-state-default" title="Search metadata"><i class="fa fa-list"></i></div>
+        <div class="ui-state-default" title="Global search"><i class="fa fa-database"></i></div>
+        <div class="ui-state-default tabclicked" title="Search metadata"><i class="fa fa-list"></i></div>
         <div class="ui-state-default" title="Search PDFs"><i class="fa fa-file-pdf-o"></i></div>
         <div class="ui-state-default" title="Search PDF notes"><i class="fa fa-comment"></i></div>
         <div class="ui-state-default" title="Search rich-text notes"><i class="fa fa-pencil"></i></div>
