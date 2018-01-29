@@ -2196,10 +2196,13 @@ function read_desktop($dbHandle) {
 
 /////////////update notes/////////////////////////
 
-function update_notes($fileID, $new_notes, $dbHandle) {
+function update_notes($fileID, $new_notes, $dbHandle, $public) {
 
     $notesID = '';
-    $userID = $dbHandle->quote($_SESSION['user_id']);
+    if ($public)
+        $userID = 1;
+    else
+        $userID = $dbHandle->quote($_SESSION['user_id']);
     $fileID = $dbHandle->quote($fileID);
 
     $dbHandle->beginTransaction();

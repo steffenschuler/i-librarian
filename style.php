@@ -168,7 +168,8 @@ a.topindex_clicked {
 #items-menu > div:focus,
 #items-menu > div.tabclicked,
 #items-item-menu,
-#items-notes-menu,
+#items-publicnotes-menu,
+#items-privatenotes-menu,
 #items-pdf-menu-a,
 #items-pdf-menu-b,
 .ui-state-active,
@@ -182,7 +183,8 @@ a.topindex_clicked {
 }
 
 #items-item-menu,
-#items-notes-menu,
+#items-publicnotes-menu,
+#items-privatenotes-menu,
 #items-pdf-menu-a,
 #items-pdf-menu-b {
     box-shadow: 1px 1px 3px rgba(0,0,0,0.33)

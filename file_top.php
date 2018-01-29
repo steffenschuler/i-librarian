@@ -331,17 +331,25 @@ if (isset($_GET['file'])) {
 
         print " </div>";
 
-        $notes = null;
+        $publicnotes = null;
+        $privatenotes = null;
 
         if (isset($_SESSION['auth'])) {
+
+            $result = $dbHandle->query("SELECT notesID,notes FROM notes WHERE fileID=$query AND userID=1 LIMIT 1");
+            $fetched = $result->fetch(PDO::FETCH_ASSOC);
+            $result = null;
+            $publicnotesid = $fetched['notesID'];
+            $publicnotes = $fetched['notes'];
+            $fetched = null;
 
             $user_query = $dbHandle->quote($_SESSION['user_id']);
             $result = $dbHandle->query("SELECT notesID,notes FROM notes WHERE fileID=$query AND userID=$user_query LIMIT 1");
             $fetched = $result->fetch(PDO::FETCH_ASSOC);
             $result = null;
-
-            $notesid = $fetched['notesID'];
-            $notes = $fetched['notes'];
+            $privatenotesid = $fetched['notesID'];
+            $privatenotes = $fetched['notes'];
+            $fetched = null;
         }
 
         $url_filename = null;
@@ -405,16 +413,23 @@ if (isset($_GET['file'])) {
                 . '</div>
             </div>
             <div class="file-grid" style="border-bottom:0">
-                <div class="ui-dialog-titlebar ui-state-default" style="border:0;border-radius:0;">Notes</div>
+                <div class="ui-dialog-titlebar ui-state-default" style="border:0;border-radius:0;">Public Notes</div>
                 <div class="separator" style="margin:0"></div>
-                <div class="alternating_row" id="file-top-notes" style="padding:4px 10px;height:220px;overflow:auto">' . $notes . '</div>
+                <div class="alternating_row" id="file-top-publicnotes" style="padding:4px 10px;height:220px;overflow:auto">' . $publicnotes . '</div>
             </div>
-            <div class="file-grid" style="width:33.33%;border-bottom:0;border-right:0">
+            <div class="file-grid" style="border-bottom:0">
+                <div class="ui-dialog-titlebar ui-state-default" style="border:0;border-radius:0;">Private Notes</div>
+                <div class="separator" style="margin:0"></div>
+                <div class="alternating_row" id="file-top-privatenotes" style="padding:4px 10px;height:220px;overflow:auto">' . $privatenotes . '</div>
+            </div>';
+        /*
+        print '<div class="file-grid" style="width:33.33%;border-bottom:0;border-right:0">
                 <div class="ui-dialog-titlebar ui-state-default" style="border:0;border-radius:0">PDF Notes</div>
                 <div class="separator" style="margin:0"></div>
                 <div class="alternating_row" style="padding:4px 10px;overflow:auto;height:220px">' . $annotation . '</div>
-            </div>
-            <div class="file-grid" style="border-bottom:0">
+            </div>';
+        */
+        print '<div class="file-grid" style="border-bottom:0">
                 <div class="ui-dialog-titlebar ui-state-default" style="border:0;border-radius:0">Graphical Abstract</div>
                 <div class="separator" style="margin:0"></div>
                 <div class="alternating_row" style="height:188px;overflow:auto">';

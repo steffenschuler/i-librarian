@@ -412,7 +412,7 @@ if (isset($_GET['searchtype']) && $_GET['searchtype'] == 'metadata') {
 
     $dbHandle->sqliteCreateFunction('search_strip_tags', 'sqlite_strip_tags', 1);
     
-    $notes_query = "SELECT fileID FROM notes WHERE $notes_in userID=" . intval($_SESSION['user_id']) . " AND $notes_category_search $search_string";
+    $notes_query = "SELECT fileID FROM notes WHERE $notes_in userID IN (1, " . intval($_SESSION['user_id']) . ") AND $notes_category_search $search_string";
 
     $sql = "$rating_search $type_search id IN ($notes_query)";
 

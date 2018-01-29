@@ -140,8 +140,12 @@ if (empty($export_files))
                 <i class="fa fa-file-pdf-o"></i><br>PDF
                 <i class="fa fa-caret-right" style="position:absolute;top:0.5em;right:3px;opacity:0.5"></i>
             </div>
-            <div class="tab" id="file-notes" style="position:relative">
-                <i class="fa fa-pencil"></i><br>Notes
+            <div class="tab" id="file-publicnotes" style="position:relative">
+                <i class="fa fa-pencil"></i><br>Public Notes
+                <i class="fa fa-caret-right" style="position:absolute;top:0.4em;right:3px;opacity:0.5"></i>
+            </div>
+            <div class="tab" id="file-privatenotes" style="position:relative">
+                <i class="fa fa-pencil"></i><br>Private Notes
                 <i class="fa fa-caret-right" style="position:absolute;top:0.4em;right:3px;opacity:0.5"></i>
             </div>
             <div class="tab" id="file-categories">
@@ -192,7 +196,10 @@ if (empty($export_files))
         <div id="items-item-menu" style="display:none;width:5.5em;position:fixed;top:0;left:0;text-align: center;padding:8px 0;z-index: 2000;cursor: pointer;line-height:1.1em">
             <i class="fa fa-external-link" style="font-size:16px"></i><br>New Tab
         </div>
-        <div id="items-notes-menu" style="display:none;width:5.5em;position:fixed;top:0;left:0;text-align: center;padding:8px 0;z-index: 2000;cursor: pointer;line-height:1.1em">
+        <div id="items-publicnotes-menu" style="display:none;width:5.5em;position:fixed;top:0;left:0;text-align: center;padding:8px 0;z-index: 2000;cursor: pointer;line-height:1.1em">
+            <i class="fa fa-external-link" style="font-size:16px"></i><br>Edit
+        </div>
+        <div id="items-privatenotes-menu" style="display:none;width:5.5em;position:fixed;top:0;left:0;text-align: center;padding:8px 0;z-index: 2000;cursor: pointer;line-height:1.1em">
             <i class="fa fa-external-link" style="font-size:16px"></i><br>Edit
         </div>
         <div id="items-pdf-menu" style="display:none;position:fixed;top:0;left:0;width:calc(11em+1px);z-index: 2001;padding:0;border:0;margin:0;line-height:1.1em">

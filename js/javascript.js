@@ -2094,39 +2094,74 @@ var items = {
             window.location.assign('pdfcontroller.php?downloadpdf=1&mode=download&file=' + filename);
         });
         var menudelay2, enterdelay2;
-        $('#file-notes').click(function () {
+        $('#file-publicnotes').click(function () {
             clearTimeout(enterdelay2);
-            $('#items-notes-menu').hide();
+            $('#items-publicnotes-menu').hide();
             var file = $('#items-right').data('file');
-            $('#items-container').data('tab', 'file-notes');
-            $('#file-panel').load('notes.php?file=' + file);
+            $('#items-container').data('tab', 'file-publicnotes');
+            $('#file-panel').load('notes.php?file=' + file + '&public=1');
         }).mouseenter(function () {
             clearTimeout(menudelay2);
-            var offset = $('#file-notes').offset();
-            $('#items-notes-menu').css('top', offset.top).css('left', offset.left + $('#file-notes').outerWidth() + 1);
+            var offset = $('#file-publicnotes').offset();
+            $('#items-publicnotes-menu').css('top', offset.top).css('left', offset.left + $('#file-publicnotes').outerWidth() + 1);
             enterdelay2 = setTimeout(function () {
-                $('#items-notes-menu').show()
+                $('#items-publicnotes-menu').show()
             }, 250);
         }).mouseleave(function () {
             clearTimeout(enterdelay2);
             menudelay2 = setTimeout(function () {
-                $('#items-notes-menu').hide()
+                $('#items-publicnotes-menu').hide()
             }, 100);
         });
-        $('#items-notes-menu').mouseenter(function () {
+        $('#file-privatenotes').click(function () {
+            clearTimeout(enterdelay2);
+            $('#items-privatenotes-menu').hide();
+            var file = $('#items-right').data('file');
+            $('#items-container').data('tab', 'file-privatenotes');
+            $('#file-panel').load('notes.php?file=' + file);
+        }).mouseenter(function () {
+            clearTimeout(menudelay2);
+            var offset = $('#file-privatenotes').offset();
+            $('#items-privatenotes-menu').css('top', offset.top).css('left', offset.left + $('#file-privatenotes').outerWidth() + 1);
+            enterdelay2 = setTimeout(function () {
+                $('#items-privatenotes-menu').show()
+            }, 250);
+        }).mouseleave(function () {
+            clearTimeout(enterdelay2);
+            menudelay2 = setTimeout(function () {
+                $('#items-privatenotes-menu').hide()
+            }, 100);
+        });
+        $('#items-publicnotes-menu').mouseenter(function () {
             clearTimeout(menudelay2);
         }).mouseleave(function () {
             menudelay2 = setTimeout(function () {
-                $('#items-notes-menu').hide()
+                $('#items-publicnotes-menu').hide()
             }, 100);
         }).click(function () {
             var file = $('#items-right').data('file');
-            $('#items-notes-menu').hide();
+            $('#items-publicnotes-menu').hide();
+            // if open, close open notes safely
+            if ($('#floating-notes > .ui-widget-header > .fa-times-circle').length === 1)
+                $('#floating-notes > .ui-widget-header > .fa-times-circle').click();
+            $('#floating-notes').children('div').eq('1').load('notes.php?editnotes=1&file=' + file + '&public=1', function () {
+                notes.init(true);
+            });
+        });
+        $('#items-privatenotes-menu').mouseenter(function () {
+            clearTimeout(menudelay2);
+        }).mouseleave(function () {
+            menudelay2 = setTimeout(function () {
+                $('#items-privatenotes-menu').hide()
+            }, 100);
+        }).click(function () {
+            var file = $('#items-right').data('file');
+            $('#items-privatenotes-menu').hide();
             // if open, close open notes safely
             if ($('#floating-notes > .ui-widget-header > .fa-times-circle').length === 1)
                 $('#floating-notes > .ui-widget-header > .fa-times-circle').click();
             $('#floating-notes').children('div').eq('1').load('notes.php?editnotes=1&file=' + file, function () {
-                notes.init();
+                notes.init(false);
             });
         });
         $('#file-categories').click(function () {
@@ -2201,7 +2236,7 @@ var items = {
     }
 };
 var notes = {
-    init: function () {
+    init: function (publicnotes) {
         // notes window is resizable and draggable
         $("#floating-notes").resizable({
             handles: "all",
@@ -2229,7 +2264,11 @@ var notes = {
             }
         });
         // copy title to notes window
-        $('#floating-notes > .ui-widget-header > div').text($('#items-left').find('.clicked').text());
+        if (publicnotes) {
+            $('#floating-notes > .ui-widget-header > div').text('Public notes of: ' + $('#items-left').find('.clicked').text());
+        } else {
+            $('#floating-notes > .ui-widget-header > div').text('Private notes of: ' + $('#items-left').find('.clicked').text());
+        }
         // bind click handlers for utility buttons
         $('#floating-notes > .ui-widget-header > .fa-times-circle').unbind().click(function () {
             var ed = tinymce.get('notes');

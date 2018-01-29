@@ -537,7 +537,7 @@ if (!empty($_GET['searchmode'])) {
 
         if (isset($_SESSION['auth']))
             $tempdbHandle->exec("INSERT INTO temp_notes SELECT fileID,notesID,notes
-                            FROM librarydb.notes WHERE fileID IN ($display_files2) AND userID=" . intval($_SESSION['user_id']));
+                            FROM librarydb.notes WHERE fileID IN ($display_files2) AND userID IN (1, " . intval($_SESSION['user_id']) . ")");
 
         $tempdbHandle->commit();
         $tempdbHandle->exec("DETACH DATABASE librarydb");
