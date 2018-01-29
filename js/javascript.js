@@ -2093,49 +2093,30 @@ var items = {
             var filename = $('#items-left').find('.clicked').data('file');
             window.location.assign('pdfcontroller.php?downloadpdf=1&mode=download&file=' + filename);
         });
-        var menudelay2, enterdelay2;
+        var menudelay2a, enterdelay2a;
         $('#file-publicnotes').click(function () {
-            clearTimeout(enterdelay2);
+            clearTimeout(enterdelay2a);
             $('#items-publicnotes-menu').hide();
             var file = $('#items-right').data('file');
             $('#items-container').data('tab', 'file-publicnotes');
             $('#file-panel').load('notes.php?file=' + file + '&public=1');
         }).mouseenter(function () {
-            clearTimeout(menudelay2);
+            clearTimeout(menudelay2a);
             var offset = $('#file-publicnotes').offset();
             $('#items-publicnotes-menu').css('top', offset.top).css('left', offset.left + $('#file-publicnotes').outerWidth() + 1);
-            enterdelay2 = setTimeout(function () {
+            enterdelay2a = setTimeout(function () {
                 $('#items-publicnotes-menu').show()
             }, 250);
         }).mouseleave(function () {
-            clearTimeout(enterdelay2);
-            menudelay2 = setTimeout(function () {
+            clearTimeout(enterdelay2a);
+            menudelay2a = setTimeout(function () {
                 $('#items-publicnotes-menu').hide()
             }, 100);
         });
-        $('#file-privatenotes').click(function () {
-            clearTimeout(enterdelay2);
-            $('#items-privatenotes-menu').hide();
-            var file = $('#items-right').data('file');
-            $('#items-container').data('tab', 'file-privatenotes');
-            $('#file-panel').load('notes.php?file=' + file);
-        }).mouseenter(function () {
-            clearTimeout(menudelay2);
-            var offset = $('#file-privatenotes').offset();
-            $('#items-privatenotes-menu').css('top', offset.top).css('left', offset.left + $('#file-privatenotes').outerWidth() + 1);
-            enterdelay2 = setTimeout(function () {
-                $('#items-privatenotes-menu').show()
-            }, 250);
-        }).mouseleave(function () {
-            clearTimeout(enterdelay2);
-            menudelay2 = setTimeout(function () {
-                $('#items-privatenotes-menu').hide()
-            }, 100);
-        });
         $('#items-publicnotes-menu').mouseenter(function () {
-            clearTimeout(menudelay2);
+            clearTimeout(menudelay2a);
         }).mouseleave(function () {
-            menudelay2 = setTimeout(function () {
+            menudelay2a = setTimeout(function () {
                 $('#items-publicnotes-menu').hide()
             }, 100);
         }).click(function () {
@@ -2148,10 +2129,30 @@ var items = {
                 notes.init(true);
             });
         });
-        $('#items-privatenotes-menu').mouseenter(function () {
-            clearTimeout(menudelay2);
+        var menudelay2b, enterdelay2b;
+        $('#file-privatenotes').click(function () {
+            clearTimeout(enterdelay2b);
+            $('#items-privatenotes-menu').hide();
+            var file = $('#items-right').data('file');
+            $('#items-container').data('tab', 'file-privatenotes');
+            $('#file-panel').load('notes.php?file=' + file);
+        }).mouseenter(function () {
+            clearTimeout(menudelay2b);
+            var offset = $('#file-privatenotes').offset();
+            $('#items-privatenotes-menu').css('top', offset.top).css('left', offset.left + $('#file-privatenotes').outerWidth() + 1);
+            enterdelay2b = setTimeout(function () {
+                $('#items-privatenotes-menu').show()
+            }, 250);
         }).mouseleave(function () {
-            menudelay2 = setTimeout(function () {
+            clearTimeout(enterdelay2b);
+            menudelay2b = setTimeout(function () {
+                $('#items-privatenotes-menu').hide()
+            }, 100);
+        });
+        $('#items-privatenotes-menu').mouseenter(function () {
+            clearTimeout(menudelay2b);
+        }).mouseleave(function () {
+            menudelay2b = setTimeout(function () {
                 $('#items-privatenotes-menu').hide()
             }, 100);
         }).click(function () {
