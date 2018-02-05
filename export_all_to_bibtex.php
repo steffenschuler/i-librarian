@@ -1,9 +1,12 @@
 <?php
-ini_set('max_execution_time', 300); // 5 min
+ini_set('max_execution_time', 600); // 10 min
+
+date_default_timezone_set('Europe/Berlin');
+echo date('r')."\n";
 
 include_once 'functions.php';
 
-define('TARGETFILE', 'library/library.bib');
+define('TARGETFILE', 'export/export.bib');
 define('ENCODING', ''); // use 'ASCII', if there are TeX problems with utf-8
 define('PDFURL', 'https://intern.ibt.kit.edu/ilibrarian/getpdf.php?ref=');
 
@@ -48,7 +51,7 @@ if($numberOfRows > 0) {
     $fp = fopen(TARGETFILE, 'w');
     if(!$fp) die('Error: '.TARGETFILE.' could not be opened.');
 
-    echo 'Starting export of '.$numberOfRows.' items to '.realpath(TARGETFILE)."... <br>\n";
+    echo 'Starting export of '.$numberOfRows.' items to '.realpath(TARGETFILE)."...\n";
     $paper = '';
     $n = 0;
 
@@ -266,15 +269,17 @@ if($numberOfRows > 0) {
         if($n % 1000 == 0) {
             fwrite($fp, $paper);
             $paper = '';
-            echo 'Exported '.$n.' of '.$numberOfRows." items.<br>\n";
+            echo 'Exported '.$n.' of '.$numberOfRows." items.\n";
             flush();
         }
     }
     
     fwrite($fp, $paper);
-    echo 'Exported '.$n.' of '.$numberOfRows." items.<br>\nExport finished!";
+    echo 'Exported '.$n.' of '.$numberOfRows." items.\nExport finished!\n";
     fclose($fp);
     $result = null;
 }
+
+echo date('r')."\n";
 
 ?>

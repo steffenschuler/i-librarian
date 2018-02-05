@@ -2,6 +2,7 @@ nbproject
 library
 !library/.htaccess
 backup
+export
 phpLiteAdmin
 bin/**
 ilibrarian.conf
