@@ -28,7 +28,20 @@ function convertSpecialChars($str) {
     $replace = array('ae','ae','oe','oe','ue','ss','a','a','a','a','e','e','e','i','i','i','i','o','o','o','o','u','u','u');
     return str_replace($search, $replace, strtolower($str));
 }
-
+function initialsLetter(&$str) {
+    $str = substr($str, 0, 1).'.';
+}
+function initialsDoubleNames(&$str) {
+	$parts = explode('-', $str);
+	array_walk($parts, 'initialsLetter');
+	$str = implode('-', $parts);
+}
+function initials($str) {
+	$str = preg_replace('/\s+/', ' ', $str);
+	$parts = explode(' ', $str);
+	array_walk($parts, 'initialsDoubleNames');
+	return implode(' ', $parts);
+}
 function parseNames($str) {
     // Extracts the last and first name from the following format used by I, Librarian:
     // L:"lastname",F:"firstname(s)"
@@ -38,6 +51,7 @@ function parseNames($str) {
     $pos1 = strpos($str, 'F:"')+3;
     $pos2 = strpos($str, '"', $pos1);
     $firstname = trim(substr($str, $pos1, $pos2-$pos1));
+    $firstname = initials($firstname);
     return array($firstname, $lastname);
 }
 
