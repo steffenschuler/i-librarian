@@ -1,7 +1,7 @@
 <?php
 include_once 'data.php';
 
-if (isset($_SESSION['auth']) && isset($_SESSION['permissions']) && ($_SESSION['permissions'] == 'A' || $_SESSION['permissions'] == 'U')) {
+if (isset($_SESSION['auth']) && isset($_SESSION['permissions']) && $_SESSION['permissions'] == 'A') {
 
     include_once 'functions.php';
 
@@ -110,6 +110,6 @@ if (isset($_SESSION['auth']) && isset($_SESSION['permissions']) && ($_SESSION['p
 <br>
     <?php
 } else {
-    print 'Super User or User permissions required.';
+    print 'Super User permissions required.';
 }
 ?>
