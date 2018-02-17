@@ -147,20 +147,22 @@ if (isset($_GET['file'])) {
             $category_array = null;
         }
 
+        $links_array = array();
+
         if (is_file(IL_PDF_PATH . DIRECTORY_SEPARATOR . get_subfolder($paper['file']) . DIRECTORY_SEPARATOR . $paper['file']) && isset($_SESSION['auth'])) {
 
             if (isset($_SESSION['pdfviewer']) && $_SESSION['pdfviewer'] == 'external')
-                print '&nbsp;<b>&middot;</b> <a title="Open PDF in new window. Right-click to download it." href="' . htmlspecialchars('pdfcontroller.php?downloadpdf=1&file=' . urlencode($paper['file']) . '#pagemode=none&scrollbar=1&navpanes=0&toolbar=1&statusbar=0&page=1&view=FitH,0&zoom=page-width') . '" target="_blank" class="pdf_link">
-				<span class="ui-state-default" style="padding:0px 2px 0px 2px;margin-right:2px">&nbsp;PDF&nbsp;</span></a>';
+                array_push($links_array, '<a title="Open PDF in new window. Right-click to download it." href="' . htmlspecialchars('pdfcontroller.php?downloadpdf=1&file=' . urlencode($paper['file']) . '#pagemode=none&scrollbar=1&navpanes=0&toolbar=1&statusbar=0&page=1&view=FitH,0&zoom=page-width') . '" target="_blank" class="pdf_link">
+				<span class="ui-state-default" style="padding:0px 2px 0px 2px;margin-right:2px">&nbsp;PDF&nbsp;</span></a>');
 
             if (!isset($_SESSION['pdfviewer']) || (isset($_SESSION['pdfviewer']) && $_SESSION['pdfviewer'] == 'internal'))
-                print '&nbsp;<b>&middot;</b> <a title="Open PDF in new window. Right-click to download it." href="' . htmlspecialchars('pdfviewer.php?file=' . urlencode($paper['file']) . '&title=' . urlencode($paper['title'])) . '" target="_blank" class="pdf_link">
-				<span class="ui-state-default ui-corner-all" style="padding:0px 2px 0px 2px;margin-right:2px">&nbsp;PDF&nbsp;</span></a>';
+                array_push($links_array, '<a title="Open PDF in new window. Right-click to download it." href="' . htmlspecialchars('pdfviewer.php?file=' . urlencode($paper['file']) . '&title=' . urlencode($paper['title'])) . '" target="_blank" class="pdf_link">
+				<span class="ui-state-default ui-corner-all" style="padding:0px 2px 0px 2px;margin-right:2px">&nbsp;PDF&nbsp;</span></a>');
         }
 
         if (!empty($paper['doi'])) {
 
-            print '&nbsp;<b>&middot;</b> <a href="http://dx.doi.org/' . urlencode($paper['doi']) . '" target="_blank">Publisher Website</a>';
+            array_push($links_array, '<a href="http://dx.doi.org/' . urlencode($paper['doi']) . '" target="_blank">Publisher Website</a>');
         }
 
         if (!empty($paper['url'])) {
@@ -238,27 +240,27 @@ if (isset($_GET['file'])) {
 
         if (!empty($pmid_url)) {
 
-            print "&nbsp;<b>&middot;</b> <a href=\"" . htmlspecialchars($pmid_url) . "\" target=\"_blank\">PubMed</a>";
+            array_push($links_array, "<a href=\"" . htmlspecialchars($pmid_url) . "\" target=\"_blank\">PubMed</a>");
         }
 
         if (!empty($pmid_related_url)) {
-            print '&nbsp;<b>&middot;</b> <a href="' . htmlspecialchars($pmid_related_url) . '" target="_blank">
-			Related Articles</a>';
+            array_push($links_array, '<a href="' . htmlspecialchars($pmid_related_url) . '" target="_blank">
+			Related Articles</a>');
         }
 
         if (!empty($pmid_citedby_pmc)) {
-            print '&nbsp;<b>&middot;</b> <a href="' . htmlspecialchars($pmid_citedby_pmc) . '" target="_blank">
-			Cited by</a>';
+            array_push($links_array, '<a href="' . htmlspecialchars($pmid_citedby_pmc) . '" target="_blank">
+			Cited by</a>');
         }
 
         if (!empty($pmcid_url)) {
 
-            print "&nbsp;<b>&middot;</b> <a href=\"" . htmlspecialchars($pmcid_url) . "\" target=\"_blank\">PubMed Central</a>";
+            array_push($links_array, "<a href=\"" . htmlspecialchars($pmcid_url) . "\" target=\"_blank\">PubMed Central</a>");
         }
 
         if (!empty($nasaads_url)) {
 
-            print "&nbsp;<b>&middot;</b> <a href=\"" . htmlspecialchars($nasaads_url) . "\" target=\"_blank\">NASA ADS</a>";
+            array_push($links_array, "<a href=\"" . htmlspecialchars($nasaads_url) . "\" target=\"_blank\">NASA ADS</a>");
         }
 
         if (!empty($nasa_related_url)) {
@@ -270,25 +272,27 @@ if (isset($_GET['file'])) {
         }
 
         if (!empty($arxiv_url)) {
-            print "&nbsp;<b>&middot;</b> <a href=\"" . htmlspecialchars($arxiv_url) . "\" target=\"_blank\">arXiv</a>";
+            array_push($links_array, "<a href=\"" . htmlspecialchars($arxiv_url) . "\" target=\"_blank\">arXiv</a>");
         }
 
         if (!empty($jstor_url)) {
-            print "&nbsp;<b>&middot;</b> <a href=\"" . htmlspecialchars($jstor_url) . "\" target=\"_blank\">
-			JSTOR</a>";
+            array_push($links_array, "<a href=\"" . htmlspecialchars($jstor_url) . "\" target=\"_blank\">
+			JSTOR</a>");
         }
 
         if (!empty($ieee_url)) {
-            print '&nbsp;<b>&middot;</b> <a href="' . htmlspecialchars($ieee_url) . '" target="_blank">IEEE</a>';
+            array_push($links_array, '<a href="' . htmlspecialchars($ieee_url) . '" target="_blank">IEEE</a>');
         }
 
         if (!empty($other_urls)) {
 
             foreach ($other_urls as $another_url) {
                 $url_host = htmlspecialchars(parse_url($another_url, PHP_URL_HOST));
-                print "&nbsp;<b>&middot;</b> <a href=\"" . htmlspecialchars($another_url) . "\" target=\"_blank\" class=\"anotherurl\">" . $url_host . "</a>";
+                array_push($links_array, "<a href=\"" . htmlspecialchars($another_url) . "\" target=\"_blank\" class=\"anotherurl\">" . $url_host . "</a>");
             }
         }
+        
+        print implode('&nbsp;<b>&middot;</b> ', $links_array);
 
         print '<div style="clear:both"></div>';
 
