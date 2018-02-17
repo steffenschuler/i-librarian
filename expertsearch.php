@@ -637,6 +637,7 @@ if (isset($_GET['searchtype']) && $_GET['searchtype'] == 'metadata') {
                     </table>
                 </td>
             </tr>
+            <!-- // BEGIN RATING DISABLED
             <tr>
                 <td class="threed">
                     Rating:
@@ -672,6 +673,7 @@ if (isset($_GET['searchtype']) && $_GET['searchtype'] == 'metadata') {
                     </table>
                 </td>
             </tr>
+            // END RATING DISABLED -->
             <tr>
                 <td class="threed">
                     Save as:

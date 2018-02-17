@@ -346,7 +346,9 @@ if (isset($_GET['browse'])) {
                             <option value="id" <?php print $orderby == 'id' ? 'selected' : ''; ?>>Date Added</option>
                             <option value="year" <?php print $orderby == 'year' ? 'selected' : ''; ?>>Date Published</option>
                             <option value="journal" <?php print $orderby == 'journal' ? 'selected' : ''; ?>>Journal</option>
+                            <!-- // BEGIN RATING DISABLED
                             <option value="rating" <?php print $orderby == 'rating' ? 'selected' : ''; ?>>Rating</option>
+                            // END RATING DISABLED -->
                             <option value="title" <?php print $orderby == 'title' ? 'selected' : ''; ?>>Title</option>
                         </optgroup>
                     </select>

@@ -118,12 +118,14 @@ if (isset($_GET['file'])) {
 
         print "</i><br>";
 
+        /* // BEGIN RATING DISABLED
         if (isset($_SESSION['auth'])) {
 
             print '<span><i class="star ' . (($paper['rating'] >= 1) ? 'ui-state-error-text' : 'ui-priority-secondary') . ' fa fa-star"></i>';
             print '&nbsp;<i class="star ' . (($paper['rating'] >= 2) ? 'ui-state-error-text' : 'ui-priority-secondary') . ' fa fa-star"></i>';
             print '&nbsp;<i class="star ' . (($paper['rating'] == 3) ? 'ui-state-error-text' : 'ui-priority-secondary') . ' fa fa-star"></i></span>&nbsp;';
         }
+        // END RATING DISABLED */
 
         if (isset($_SESSION['auth'])) {
 

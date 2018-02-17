@@ -518,11 +518,13 @@ if (isset($_SESSION['auth'])) {
 
                     print '<div class="firstcontainer items">';
 
+                    /* // BEGIN RATING DISABLED
                     print '<i class="star fa fa-star ' . (($rating >= 1) ? 'ui-state-error-text' : 'ui-priority-secondary') . '" style="cursor:auto"></i>&nbsp;';
                     print '<i class="star fa fa-star ' . (($rating >= 2) ? 'ui-state-error-text' : 'ui-priority-secondary') . '" style="cursor:auto"></i>&nbsp;';
                     print '<i class="star fa fa-star ' . (($rating == 3) ? 'ui-state-error-text' : 'ui-priority-secondary') . '" style="cursor:auto"></i>';
 
                     print '&nbsp;<b>&middot;</b> ';
+                    // END RATING DISABLED */
 
                     if (!empty($journal))
                         print htmlspecialchars($journal);

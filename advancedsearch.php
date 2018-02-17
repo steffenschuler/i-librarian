@@ -1348,6 +1348,7 @@ if (!isset($_GET['searchtype'])) {
                     </table>
                 </td>
             </tr>
+            <!-- // BEGIN RATING DISABLED
             <tr>
                 <td class="threed">
                     Rating:
@@ -1383,6 +1384,7 @@ if (!isset($_GET['searchtype'])) {
                     </table>
                 </td>
             </tr>
+            // END RATING DISABLED -->
             <tr>
                 <td class="threed">
                     Save as:

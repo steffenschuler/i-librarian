@@ -1886,9 +1886,11 @@ function show_search_results($result, $select, $shelf_files, $desktop_projects, 
             . '<i class="fa fa-info-circle quick-view" style="font-size:1.25em"></i>&nbsp;&nbsp;&nbsp;';
             print '<i class="fa fa-external-link-square quick-view-external" style="font-size:1.25em"></i>&nbsp;&nbsp;&nbsp;';
 
+            /* // BEGIN RATING DISABLED
             print '<span><i class="star ' . (($paper['rating'] >= 1) ? 'ui-state-error-text' : 'ui-priority-secondary') . ' fa fa-star" style="font-size:1.25em"></i>';
             print '&nbsp;<i class="star ' . (($paper['rating'] >= 2) ? 'ui-state-error-text' : 'ui-priority-secondary') . ' fa fa-star" style="font-size:1.25em"></i>';
             print '&nbsp;<i class="star ' . (($paper['rating'] == 3) ? 'ui-state-error-text' : 'ui-priority-secondary') . ' fa fa-star" style="font-size:1.25em"></i></span>&nbsp;&nbsp;';
+            // END RATING DISABLED */
 
             if (empty($paper['bibtex'])) {
                 $bibtex_author = strip_tags($paper['authors']);
@@ -2037,11 +2039,15 @@ function show_search_results($result, $select, $shelf_files, $desktop_projects, 
                     $category_array[0] = '<a href="' . htmlspecialchars('display.php?browse[0]=category&select=' . $select)
                             . '" class="navigation">!unassigned</a>';
 
-                print '<br><span><i class="star ' . (($paper['rating'] >= 1) ? 'ui-state-error-text' : 'ui-priority-secondary') . ' fa fa-star"></i>';
+				print '<br>';
+				
+                /* // BEGIN RATING DISABLED
+                print '<span><i class="star ' . (($paper['rating'] >= 1) ? 'ui-state-error-text' : 'ui-priority-secondary') . ' fa fa-star"></i>';
                 print '&nbsp;<i class="star ' . (($paper['rating'] >= 2) ? 'ui-state-error-text' : 'ui-priority-secondary') . ' fa fa-star"></i>';
                 print '&nbsp;<i class="star ' . (($paper['rating'] == 3) ? 'ui-state-error-text' : 'ui-priority-secondary') . ' fa fa-star"></i></span>&nbsp;';
 
                 print '<b style="margin:0 0.5em">&middot;</b>';
+                // END RATING DISABLED */
 
                 if (empty($paper['bibtex'])) {
                     $bibtex_author = strip_tags($paper['authors']);

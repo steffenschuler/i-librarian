@@ -255,7 +255,9 @@ if (isset($_SESSION['auth'])) {
                     <input type="radio" name="orderby" value="id"<?php print htmlspecialchars($orderby == '' ? ' checked' : ''); ?>>Addition Date
                     <input type="radio" name="orderby" value="year"<?php print htmlspecialchars($orderby == 'year' ? ' checked' : ''); ?>>Publication Year
                     <input type="radio" name="orderby" value="journal"<?php print htmlspecialchars($orderby == 'journal' ? ' checked' : ''); ?>>Journal Name
+                    <!-- // BEGIN RATING DISABLED
                     <input type="radio" name="orderby" value="rating"<?php print htmlspecialchars($orderby == 'rating' ? ' checked' : ''); ?>>Rating
+                    // END RATING DISABLED -->
                     <input type="radio" name="orderby" value="title"<?php print htmlspecialchars($orderby == 'title' ? ' checked' : ''); ?>>Title
                 </td>
             </tr>
