@@ -28,7 +28,7 @@ $dbHandle->exec("DETACH DATABASE usersdatabase");
 $number_of_users = count($users);
 
 ?>
-<div class="leftindex" id="leftindex-left" style="float:left;width:233px;height:100%;overflow:scroll">
+<div class="leftindex" id="leftindex-left" style="float:left;width:233px;height:100%;overflow:auto">
     <form id="quicksearch" action="search.php" method="GET" target="rightpanel">
         <table class="ui-state-default" style="width:100%;border-bottom:none">
             <tr>

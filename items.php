@@ -103,7 +103,7 @@ if (empty($export_files))
     }
     $result = null;
 
-    $hr = '<div class="separator"></div>';
+    $hr = '';
 
     print join($hr, $divs);
 

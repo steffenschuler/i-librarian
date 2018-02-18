@@ -1,7 +1,7 @@
 <?php
 include_once 'data.php';
 ?>
-<div class="leftindex" style="float:left;width:240px;height:100%;overflow:scroll;margin:0px;padding:0px;border:0px" id="tools-left">
+<div class="leftindex" style="float:left;width:240px;height:100%;overflow:auto;margin:0px;padding:0px;border-right:1px solid #b5b6b8" id="tools-left">
     <button id="rtfscanlink">Citation Scan</button>
     <button id="citationstyleslink">Citation Styles</button>
     <?php

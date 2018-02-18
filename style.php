@@ -71,7 +71,11 @@ table.items {
 }
 
 td.items, div.items {
-    background-color: #" . $alternating_row_background_color . "
+    background-color: #" . $alternating_row_background_color . ";
+    margin: 12px 8px;
+    border: 1px solid #ddd;
+    box-shadow: 0 0 2px rgba(0,0,0,0.15);
+    border-radius: 5px;
 }
 
 .titles, .titles-pdf {
@@ -96,10 +100,7 @@ div.authors {
 }
 
 .abstract {
-    padding-top: 3px;
-    padding-bottom: 4px;
-    padding-left: 7px;
-    padding-right: 7px;
+    padding: 8px 0px 4px 0px;
     text-align: justify;
     font-family: '" . $main_window_abstract_font_family . "', serif;
     font-size: " . $main_window_abstract_font_size . "px;
@@ -435,7 +436,8 @@ border-spacing: 0px;
 }
 
 table.top	{
-width: 100%
+width: 100%;
+padding: 0 6px;
 }
 
 td.omnitooltd {
@@ -598,12 +600,19 @@ column-rule: 2px groove rgba(255,255,255,0.75);
 box-shadow: 0 0 2px rgba(0,0,0,0.15);
 }
 
+.file-grid-container {
+float: left;
+margin: 0 8px;
+border: 1px solid #ddd;
+box-shadow: 0 0 2px rgba(0,0,0,0.15);
+border-radius: 5px;
+}
+
 .file-grid {
 float:left;
 width:33.2%;
 width:calc(33.33% - 1px);
-border:1px solid rgba(0,0,0,0.2);
-border-left:none
+border-right: 1px solid rgba(0,0,0,0.2);
 }
 
 .file-grid > div:first-child {

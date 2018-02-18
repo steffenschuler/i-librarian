@@ -391,13 +391,13 @@ if (isset($_GET['browse'])) {
 
             print '<table cellspacing="0" class="top" style="margin-bottom:1px"><tr><td style="width: 18em">';
 
-            print '<div class="ui-state-default ui-corner-top' . ($from == 0 ? ' ui-state-disabled' : '') . '" style="float:left;margin-left:2px;width:26px;text-align:center">'
+            print '<div class="ui-state-default ui-corner-all' . ($from == 0 ? ' ui-state-disabled' : '') . '" style="float:left;margin-left:2px;width:26px;text-align:center">'
                     . ($from == 0 ? '' : '<a href="' . htmlspecialchars("display.php?select=$_GET[select]&project=$project&from=0&$browse_url_string") . '" class="navigation" style="display:block;width:26px">') .
                     '&nbsp;<i class="fa fa-caret-left"></i> <i class="fa fa-caret-left"></i>&nbsp;'
                     . ($from == 0 ? '' : '</a>') .
                     '</div>';
 
-            print '<div class="ui-state-default ui-corner-top' . ($from == 0 ? ' ui-state-disabled' : '') . '" style="float:left;margin-left:2px;width:4em;text-align:center">'
+            print '<div class="ui-state-default ui-corner-all' . ($from == 0 ? ' ui-state-disabled' : '') . '" style="float:left;margin-left:2px;width:4em;text-align:center">'
                     . ($from == 0 ? '' : '<a title="Shortcut: A" class="navigation prevpage" href="' . htmlspecialchars("display.php?select=$_GET[select]&project=$project&from=" . ($from - $limit) . "&$browse_url_string") . '" style="color:black;display:block;width:100%">') .
                     '<i class="fa fa-caret-left"></i>&nbsp;Back'
                     . ($from == 0 ? '' : '</a>') .
@@ -407,19 +407,19 @@ if (isset($_GET['browse'])) {
 
             (($rows % $limit) == 0) ? $lastpage = $rows - $limit : $lastpage = $rows - ($rows % $limit);
 
-            print '<div class="ui-state-default ui-corner-top' . (($rows > ($from + $limit)) ? '' : ' ui-state-disabled') . '" style="float:right;margin-right:2px;width:26px;text-align:center">'
+            print '<div class="ui-state-default ui-corner-all' . (($rows > ($from + $limit)) ? '' : ' ui-state-disabled') . '" style="float:right;margin-right:2px;width:26px;text-align:center">'
                     . (($rows > ($from + $limit)) ? '<a class="navigation" href="' . htmlspecialchars("display.php?select=$_GET[select]&project=$project&from=$lastpage&$browse_url_string") . '" style="display:block;width:26px">' : '') .
                     '<i class="fa fa-caret-right"></i>&nbsp;<i class="fa fa-caret-right"></i>'
                     . (($rows > ($from + $limit)) ? '</a>' : '') .
                     '</div>';
 
-            print '<div class="ui-state-default ui-corner-top' . (($rows > ($from + $limit)) ? '' : ' ui-state-disabled') . '" style="float:right;margin-right:2px;width: 4em;text-align:center">'
+            print '<div class="ui-state-default ui-corner-all' . (($rows > ($from + $limit)) ? '' : ' ui-state-disabled') . '" style="float:right;margin-right:2px;width: 4em;text-align:center">'
                     . (($rows > ($from + $limit)) ? '<a title="Shortcut: D" class="navigation nextpage" href="' . htmlspecialchars("display.php?select=$_GET[select]&project=$project&from=" . ($from + $limit) . "&$browse_url_string") . '" style="color:black;display:block;width:100%">' : '') .
                     '&nbsp;Next <i class="fa fa-caret-right"></i>&nbsp;'
                     . (($rows > ($from + $limit)) ? '</a>' : '') .
                     '</div>';
 
-            print '<div class="ui-state-default ui-corner-top pgdown" style="float: right;width: 4em;margin-right:2px;text-align:center">PgDn</div>';
+            print '<div class="ui-state-default ui-corner-all pgdown" style="float: right;width: 4.5em;margin-right:2px;text-align:center">PgDn <i class="fa fa-caret-down"></i></div>';
 
             print '</td></tr></table>';
 
@@ -427,13 +427,13 @@ if (isset($_GET['browse'])) {
 
             print '<table cellspacing="0" class="top" style="margin:1px 0px 2px 0px"><tr><td style="width: 50%">';
 
-            print '<div class="ui-state-default ui-corner-bottom' . ($from == 0 ? ' ui-state-disabled' : '') . '" style="float:left;margin-left:2px;width:26px;text-align:center">'
+            print '<div class="ui-state-default ui-corner-all' . ($from == 0 ? ' ui-state-disabled' : '') . '" style="float:left;margin-left:2px;width:26px;text-align:center">'
                     . ($from == 0 ? '' : '<a href="' . htmlspecialchars("display.php?select=$_GET[select]&project=$project&from=0&$browse_url_string") . '" class="navigation" style="display:block;width:26px">') .
                     '<i class="fa fa-caret-left"></i> <i class="fa fa-caret-left"></i>'
                     . ($from == 0 ? '' : '</a>') .
                     '</div>';
 
-            print '<div class="ui-state-default ui-corner-bottom' . ($from == 0 ? ' ui-state-disabled' : '') . '" style="float:left;margin-left:2px;width:4em;text-align:center">'
+            print '<div class="ui-state-default ui-corner-all' . ($from == 0 ? ' ui-state-disabled' : '') . '" style="float:left;margin-left:2px;width:4em;text-align:center">'
                     . ($from == 0 ? '' : '<a title="Shortcut: A" class="navigation" href="' . htmlspecialchars("display.php?select=$_GET[select]&project=$project&from=" . ($from - $limit) . "&$browse_url_string") . '" style="color:black;display:block;width:100%">') .
                     '<i class="fa fa-caret-left"></i> Back'
                     . ($from == 0 ? '' : '</a>') .
@@ -441,19 +441,19 @@ if (isset($_GET['browse'])) {
 
             print '</td><td style="width:50%">';
 
-            print '<div class="ui-state-default ui-corner-bottom' . (($rows > ($from + $limit)) ? '' : ' ui-state-disabled') . '" style="float:right;margin-right:2px;width:26px;text-align:center">'
+            print '<div class="ui-state-default ui-corner-all' . (($rows > ($from + $limit)) ? '' : ' ui-state-disabled') . '" style="float:right;margin-right:2px;width:26px;text-align:center">'
                     . (($rows > ($from + $limit)) ? '<a class="navigation" href="' . htmlspecialchars("display.php?select=$_GET[select]&project=$project&from=$lastpage&$browse_url_string") . '" style="display:block;width:26px">' : '') .
                     '<i class="fa fa-caret-right"></i> <i class="fa fa-caret-right"></i>'
                     . (($rows > ($from + $limit)) ? '</a>' : '') .
                     '</div>';
 
-            print '<div class="ui-state-default ui-corner-bottom' . (($rows > ($from + $limit)) ? '' : ' ui-state-disabled') . '" style="float:right;margin-right:2px;width:4em;text-align:center">'
+            print '<div class="ui-state-default ui-corner-all' . (($rows > ($from + $limit)) ? '' : ' ui-state-disabled') . '" style="float:right;margin-right:2px;width:4em;text-align:center">'
                     . (($rows > ($from + $limit)) ? '<a title="Shortcut: D" class="navigation" href="' . htmlspecialchars("display.php?select=$_GET[select]&project=$project&from=" . ($from + $limit) . "&$browse_url_string") . '" style="color:black;display:block;width:100%">' : '') .
                     'Next <i class="fa fa-caret-right"></i>'
                     . (($rows > ($from + $limit)) ? '</a>' : '') .
                     '</div>';
 
-            print '<div class="ui-state-default ui-corner-bottom pgup" style="float:right;width:4em;margin-right:2px;text-align:center">PgUp</div>';
+            print '<div class="ui-state-default ui-corner-all pgup" style="float:right;width:4.5em;margin-right:2px;text-align:center">PgUp <i class="fa fa-caret-up"></i></div>';
 
             print '</td></tr></table><br>';
         } else {

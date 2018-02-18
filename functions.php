@@ -1688,7 +1688,7 @@ function show_search_results($result, $select, $shelf_files, $desktop_projects, 
     $i = 0;
 
     if ($display == 'icons')
-        print '<table cellspacing=0 id="icon-container" style="border:0;width:100%">
+        print '<table cellspacing=0 id="icon-container" style="border:0;width:100%;margin:10px 0">
         <tr><td class="alternating_row" style="width:100%;border-bottom:1px rgba(0,0,0,0.15) solid;border-top:1px rgba(0,0,0,0.15) solid;padding-bottom:11px">';
 
     while (list($key, $paper) = each($result)) {

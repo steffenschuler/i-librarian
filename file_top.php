@@ -411,7 +411,9 @@ if (isset($_GET['file'])) {
             $result = null;
         }
 
-        print '<div class="file-grid" style="border-bottom:0">
+        print '</div>
+            <div class="file-grid-container">
+               <div class="file-grid" style="border-bottom:0">
                 <div class="ui-dialog-titlebar ui-state-default" style="border:0">Abstract</div>
                 <div class="separator" style="margin:0"></div>
                 <div class="alternating_row abstract" style="padding:4px 10px;overflow:auto;height:220px;column-count:auto;-moz-column-count:auto;-webkit-column-count:auto">'
@@ -553,6 +555,7 @@ if (isset($_GET['file'])) {
         . '<br><u>' . (!empty($_SESSION['custom3']) ? $_SESSION['custom3'] : 'Custom 3') . ':</u> ' . htmlspecialchars($paper['custom3'])
         . '<br><u>' . (!empty($_SESSION['custom4']) ? $_SESSION['custom4'] : 'Custom 4') . ':</u> ' . htmlspecialchars($paper['custom4'])
         . '</div>
+            </div>
             </div>';
 
         print '<div style="clear:both"></div><div style="padding:12px"><b>Added:</b> ' . date('F jS, Y', strtotime($paper['addition_date'])) . ' by ' . htmlspecialchars(get_username($dbHandle, $paper['added_by']));

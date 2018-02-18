@@ -16,7 +16,7 @@ if (isset($_SESSION['permissions']) && ($_SESSION['permissions'] == 'A' || $_SES
         ${$setting['setting_name']} = 1;
     }
     ?>
-    <div class="leftindex" id="addarticle-left" style="float:left;width:240px;height:100%;overflow:scroll">
+    <div class="leftindex" id="addarticle-left" style="float:left;width:240px;height:100%;overflow:auto;border-right:1px solid #b5b6b8">
         <button id="uploadlink">Add Single Item</button>
         <button id="importlink">Add Multiple Items</button>
         <button id="<?php print ($hosted == false) ? 'batchimportlink' : 'importany'  ?>">Add Multiple PDFs</button>

@@ -16,7 +16,7 @@ if ($_GET['select'] == 'desk') {
     die();
 }
 ?>
-<div class="leftindex" id="leftindex-left" style="float:left;width:233px;height:100%;overflow:scroll;border:0;margin:0px">
+<div class="leftindex" id="leftindex-left" style="float:left;width:233px;height:100%;overflow:auto;border:0;margin:0px">
     <form id="quicksearch" action="search.php" method="GET" target="rightpanel">
         <table class="ui-state-default" style="width:100%;border-bottom:none">
             <tr>
@@ -230,7 +230,7 @@ if ($_GET['select'] == 'desk') {
         <?php
     }
     ?>
-    <div style="height:1200px;width:50%">&nbsp;</div>
+    <div>&nbsp;</div>
 </div>
 <div class="alternating_row middle-panel"
      style="float:left;width:6px;height:100%;overflow:hidden;border-right:1px solid #b5b6b8;cursor:pointer">
